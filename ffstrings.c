@@ -68,7 +68,7 @@ int strings(FILE *mem, unsigned long long start, unsigned long long end, long of
     for (int count=end-start;count;count--)
     {
         char c = getc(mem);
-        if (isalnum(c))
+        if (isprint(c))
         {
             if (isContinue == False)
                 putchar('\n');
