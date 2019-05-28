@@ -25,13 +25,13 @@ struct map {
 
 int parse_args(int argc, char **argv)
 {
-    if (argc != 1)
+    if (argc != 2)
     {
         fprintf(stderr, "Usage: ffstrings <PID>\n");
         return -1;
     }
     int pid;
-    if (sscanf(argv[0], "%d", &pid) == EOF)
+    if (sscanf(argv[1], "%d", &pid) == EOF)
     {
         fprintf(stderr, "Usage: ffstrings <PID>\n");
         return -1;
