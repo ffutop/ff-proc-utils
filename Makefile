@@ -1,6 +1,5 @@
 
-all: ffdump ffstrings
-
+all: ffdump ffstrings ffutime ffmemchg
 
 ffdump: ffdump.c
 	gcc -o ffdump ffdump.c -w
@@ -17,7 +16,7 @@ ffmemchg: memchg
 clean:
 	for FILE in $(ls)
 	do
-		if [[ -n $(file ${FILE} | grep "ELF") ]]
+		if [ -n "$(file ${FILE} | grep "ELF")" ]
 		then
 			rm ${FILE}
 		fi
