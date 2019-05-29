@@ -11,5 +11,14 @@ ffstrings: ffstrings.c
 ffutime: utime.c
 	gcc -o ffutime utime.c 
 
+ffmemchg: memchg
+	gcc -o memchg memchg.c
+
 clean:
-	rm ffstring ffdump
+	for FILE in $(ls)
+	do
+		if [[ -n $(file ${FILE} | grep "ELF") ]]
+		then
+			rm ${FILE}
+		fi
+	done
