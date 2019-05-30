@@ -1,5 +1,7 @@
 
-all: ffdump ffstrings ffutime ffmemchg
+EXEC := ffdump ffstrings utime memchg
+
+all: $(EXEC)
 
 ffdump: ffdump.c
 	gcc -o ffdump ffdump.c -w
@@ -14,10 +16,4 @@ ffmemchg: memchg
 	gcc -o memchg memchg.c
 
 clean:
-	for FILE in $(ls)
-	do
-		if [ -n "$(file ${FILE} | grep "ELF")" ]
-		then
-			rm ${FILE}
-		fi
-	done
+	rm $(EXEC)
