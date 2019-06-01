@@ -68,6 +68,11 @@ int strings(FILE *mem, unsigned long long start, unsigned long long end, long of
     for (int count=end-start;count;count--)
     {
         char c = getc(mem);
+        if (c == -1)
+        {
+            fprintf(stderr, "%s (errno: %d)\n", strerror(errno), errno);
+            return -1;
+        }
         if (isprint(c))
         {
             if (isContinue == False)
@@ -97,7 +102,7 @@ int main(int argc, char **argv)
     FILE *mem = fopen(procMem, "r");
     struct map map;
     while (fscanf(maps, "%llx-%llx %s %lx %*s %*s%[^\n]", &map.start_addr, &map.end_addr, map.op_flag, &map.offset, map.file_desc) != EOF)
-        if (is_heap(&map.file_desc) == True || is_stack(&map.file_desc))
+        if (is_heap(&map.file_desc) == True || is_stack(&map.file_desc == True))
             strings(mem, map.start_addr, map.end_addr, map.offset);
     fclose(mem);
     fclose(maps);
