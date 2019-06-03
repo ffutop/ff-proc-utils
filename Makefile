@@ -1,5 +1,5 @@
 
-EXEC := ffdump ffstrings utime memchg
+EXEC := ffdump ffstrings utime memchg fftrace
 
 all: $(EXEC)
 
@@ -12,8 +12,11 @@ ffstrings: ffstrings.c
 ffutime: utime.c
 	gcc -o ffutime utime.c 
 
-ffmemchg: memchg
+ffmemchg: memchg.c
 	gcc -o memchg memchg.c
+
+fftrace: fftrace.c
+	gcc -o fftrace fftrace.c
 
 clean:
 	rm $(EXEC)

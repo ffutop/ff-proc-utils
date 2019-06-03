@@ -1,8 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <sys/types.h>
 #include "fftrace.h"
 
 int trace_fd = -1;
@@ -37,4 +35,10 @@ int ff_trace_off()
     trace_fd = -1;
     marker_fd = -1;
     return 0;
+}
+
+int main()
+{
+    ff_trace_on();
+    ff_trace_off();
 }
